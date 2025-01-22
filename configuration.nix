@@ -14,6 +14,29 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Driver GPU
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      pkgs.mesa
+      pkgs.vulkan-loader
+    ];
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [
+      pkgs.intel-media-driver
+    ];
+  };
+
+  # Custom monitors
+  boot.kernelParams = [
+    "video=HDMI-A-1:1920x1080@60"
+    "video=DP-1:1920x1080@60"
+  ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -86,7 +109,7 @@
     description = "xaxa";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
+      thunderbird
     ];
   };
 
@@ -109,6 +132,21 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    alacritty
+    git
+    pkgs.jetbrains.phpstorm
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.discord
+    pkgs.vscode
+    pkgs.geany
+    pkgs.intel-media-sdk
+    pkgs.mesa
+    wget
+    curl
+    pkgs.libva
+    pkgs.vulkan-tools
+    pkgs.gpu-viewer
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
