@@ -4,24 +4,25 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
+        alacritty
+        clinfo
+        curl
+        discord
+        docker
+        docker-compose
+        geany
+        git
+        intel-media-sdk
+        kitty
+        libva
+        linux-firmware
+        mesa
+        mesa-demos
+        pciutils
         pkgs.jetbrains.phpstorm
-        pkgs.docker
-        pkgs.docker-compose
-        pkgs.discord
         pkgs.vscode
-        pkgs.geany
-        pkgs.intel-media-sdk
-        pkgs.mesa
-        pkgs.libva
         pkgs.vulkan-tools
         wget
-        curl
-        clinfo
-        pciutils
-        linux-firmware
-        mesa-demos
-        alacritty
-        git
     ];
 }
 

@@ -18,6 +18,12 @@
     ];
     extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
   };
+
+  # Force Intel-media-driver
+  environment.sessionVariables = { 
+    LIBVA_DRIVER_NAME = "iHD"; 
+    NIXOS_OZONE_WL = "1";
+  };
 }
 
 # lspci -k | grep -A 3 -i vga
