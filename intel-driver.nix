@@ -10,8 +10,6 @@
       vpl-gpu-rt
       mesa
       vulkan-loader
-      intel-media-driver
-      intel-vaapi-driver
       libva
     ];
   };

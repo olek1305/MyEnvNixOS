@@ -17,8 +17,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
     "nomodeset"
-    "i915.force_probe=*"
-    "video=HDMI-A-1:1920x1080@60"
+    "i915.force_probe=56a5"
   ];
   boot.kernelModules = [ "i915" ];
 
