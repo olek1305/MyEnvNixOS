@@ -2,8 +2,11 @@
 
 {
     # Automatic updating
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.dates = "monthly";
+    system.autoUpgrade = 
+    {
+        enable = true;
+        dates = "monthly";
+    };
 
     # Automatic cleanup
     nix.gc = {
