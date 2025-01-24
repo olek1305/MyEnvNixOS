@@ -8,35 +8,26 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./intel-driver.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Driver GPU
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      pkgs.mesa
-      pkgs.vulkan-loader
-    ];
-  };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = [
-      pkgs.intel-media-driver
-    ];
-  };
-
-  # Custom monitors
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelParams = [
+    "nomodeset"
+    "i915.force_probe=*"
     "video=HDMI-A-1:1920x1080@60"
-    "video=DP-1:1920x1080@60"
   ];
+  boot.kernelModules = [ "i915" ];
 
+  # Force Intel-media-driver
+  environment.sessionVariables = { 
+    LIBVA_DRIVER_NAME = "iHD";
+  };
+
+ 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -114,8 +105,8 @@
   };
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "xaxa";
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "xaxa";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
@@ -147,6 +138,10 @@
     pkgs.libva
     pkgs.vulkan-tools
     pkgs.gpu-viewer
+    clinfo
+    pciutils
+    linux-firmware
+    mesa-demos
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
