@@ -2,8 +2,7 @@
 
 {
     # Automatic updating
-    system.autoUpgrade = 
-    {
+    system.autoUpgrade = {
         enable = true;
         dates = "monthly";
     };
