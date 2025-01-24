@@ -9,23 +9,21 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./intel-driver.nix
+      ./packages-to-install.nix
+      ./automatic.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    "nomodeset"
-    "i915.force_probe=56a5"
-  ];
   boot.kernelModules = [ "i915" ];
 
   # Force Intel-media-driver
   environment.sessionVariables = { 
-    LIBVA_DRIVER_NAME = "iHD";
+    LIBVA_DRIVER_NAME = "iHD"; 
+    NIXOS_OZONE_WL = "1";
   };
-
  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -82,16 +80,10 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.xaxa = {
@@ -116,32 +108,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    alacritty
-    git
-    pkgs.jetbrains.phpstorm
-    pkgs.docker
-    pkgs.docker-compose
-    pkgs.discord
-    pkgs.vscode
-    pkgs.geany
-    pkgs.intel-media-sdk
-    pkgs.mesa
-    wget
-    curl
-    pkgs.libva
-    pkgs.vulkan-tools
-    pkgs.gpu-viewer
-    clinfo
-    pciutils
-    linux-firmware
-    mesa-demos
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

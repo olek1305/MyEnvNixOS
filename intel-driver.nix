@@ -5,12 +5,20 @@
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      intel-media-driver
-      intel-vaapi-driver
       vpl-gpu-rt
-      mesa
-      vulkan-loader
-      libva
+      libvdpau-va-gl
+      intel-media-driver
+      intel-compute-runtime
+
+      # Optional
+      #intel-vaapi-driver
+      #mesa
+      #vulkan-loader
+      #libva
     ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ];
   };
 }
+
+# lspci -k | grep -A 3 -i vga
+# Check if Kernel modules has i915 then its ok.
