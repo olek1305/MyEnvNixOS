@@ -11,6 +11,7 @@
       ./intel-driver.nix
       ./packages-to-install.nix
       ./automatic.nix
+      ./environment.nix
     ];
 
   # Bootloader.
@@ -21,10 +22,12 @@
     kernelModules = [ "i915" ];
   };
 
-  # Force Intel-media-driver
-  environment.sessionVariables = { 
-    LIBVA_DRIVER_NAME = "iHD"; 
-    NIXOS_OZONE_WL = "1";
+  # Hyprland
+  programs.hyprland = {
+    # Install the packages from nixpkgs
+    enable = true;
+    # Whether to enable XWayland
+    xwayland.enable = true;
   };
  
   networking.hostName = "nixos"; # Define your hostname.
@@ -111,6 +114,24 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("users")
+          && (
+            action.id == "org.freedesktop.login1.reboot" ||
+            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.power-off" ||
+            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+          )
+        )
+      {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -137,5 +158,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

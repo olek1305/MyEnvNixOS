@@ -11,7 +11,7 @@
       intel-compute-runtime
 
       # Optional
-      #intel-vaapi-driver
+      intel-vaapi-driver
       #mesa
       #vulkan-loader
       #libva
@@ -21,10 +21,11 @@
 
   # Force Intel-media-driver
   environment.sessionVariables = { 
-    LIBVA_DRIVER_NAME = "iHD"; 
-    NIXOS_OZONE_WL = "1";
+  LIBVA_DRIVER_NAME = "iHD"; 
+  NIXOS_OZONE_WL = "1";
   };
 }
 
 # lspci -k | grep -A 3 -i vga
 # Check if Kernel modules has i915 then its ok.
+# TODO ITS DOESNT SHOW i951, ONLY xe in kernel driver and module, but its fixed monitors with full HD
