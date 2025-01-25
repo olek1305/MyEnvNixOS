@@ -27,7 +27,7 @@
             };
         shellAliases = {
             pa = "php artisan";
-            ds = "docker-compose";
+            dc = "docker-compose";
             ll = "ls -l";
             update = "sudo nixos-rebuild switch";
         };
