@@ -35,6 +35,3 @@
         };
     };
 }
-    # TODO NPM/NODEJS
-
-    # TODO GOLANG

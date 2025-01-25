@@ -23,6 +23,7 @@
   };
 
   # Hyprland
+  # TODO STILL NOT WORK, DRIVER MODULE NEED TO I915 FROM XE
   programs.hyprland = {
     # Install the packages from nixpkgs
     enable = true;
