@@ -12,7 +12,8 @@
 
       # Optional
       intel-vaapi-driver
-      #mesa
+      mesa
+      vulkan-tools
       #vulkan-loader
       #libva
     ];

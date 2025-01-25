@@ -36,6 +36,10 @@
         wget
         zsh
     ];
+
+    nixpkgs.config.allowUnfree = true;
+
+    programs.firefox.enable = true;
 }
 
 # command to install packages
