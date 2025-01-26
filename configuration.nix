@@ -95,11 +95,11 @@
   users.users.xaxa = {
     isNormalUser = true;
     description = "xaxa";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      thunderbird
-    ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "git" "vscode" "jetbrains.phpstorm"];
   };
+
+  # Docker
+  virtualisation.docker.enable = true;
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
