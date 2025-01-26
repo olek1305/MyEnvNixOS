@@ -26,14 +26,17 @@
         nodejs_23
         oh-my-zsh
         pciutils
-        php # 8.3.15
-        php83Packages.cyclonedx-php-composer
+        #php # 8.3.15
+        #php83Packages.cyclonedx-php-composer
+        (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
+        php82Packages.cyclonedx-php-composer
         symfony-cli
+        thunderbird
         vscode
         vulkan-tools
+        wget
         xdg-desktop-portal-hyprland
         xwayland
-        wget
         zsh
     ];
 
