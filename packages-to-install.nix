@@ -38,6 +38,10 @@
         xdg-desktop-portal-hyprland
         xwayland
         zsh
+
+        # for Theme GTK Gnome
+        ibus
+        layan-gtk-theme
     ];
 
     nixpkgs.config.allowUnfree = true;
