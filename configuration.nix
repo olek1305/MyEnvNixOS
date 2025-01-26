@@ -19,7 +19,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "i915" ];
+    kernelModules = [ "btrfs" ];
   };
 
   # Hyprland
@@ -99,7 +99,20 @@
   };
 
   # Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+
+  virtualisation.docker.storageDriver = "btrfs";
+
+  # btrfs
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
+  
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
