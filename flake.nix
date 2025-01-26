@@ -15,11 +15,11 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-          home-manager.lib.homeManagerConfiguration {
-            home.username = "xaxa";
-            home.homeDirectory = "/home/xaxa";
-            modules = [ ./home.nix ];
-          }
+          # home-manager.lib.homeManagerConfiguration {
+          #   home.username = "xaxa";
+          #   home.homeDirectory = "/home/xaxa";
+          #   modules = [ ./home.nix ];
+          # }
         ];
       };
     };
