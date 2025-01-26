@@ -11,7 +11,6 @@
         discord
         docker
         docker-compose
-        geany
         git
         go
         intel-media-sdk
@@ -37,6 +36,7 @@
         wget
         xdg-desktop-portal-hyprland
         xwayland
+        zed-editor
         zsh
 
         # for Theme GTK Gnome
