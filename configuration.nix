@@ -84,7 +84,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -103,22 +103,16 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "git" "vscode" "jetbrains.phpstorm"];
   };
 
-  # Docker
-  virtualisation.docker.rootless = {
+  # Docker settings
+  virtualisation.docker = {
     enable = true;
-    setSocketVariable = true;
-  };
-
-  virtualisation.docker.storageDriver = "btrfs";
-
-  # btrfs
-  services.btrfs.autoScrub = {
-    enable = true;
-    interval = "monthly";
-    fileSystems = [ "/" ];
+    daemon.settings = {
+      "default-address-pools" = [
+        { "base" = "172.27.0.0/16"; "size" = 24; }
+      ];
+    };
   };
   
-
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "xaxa";
