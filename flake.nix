@@ -15,6 +15,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          # TODO FIX HOME-MANAGER
           # home-manager.lib.homeManagerConfiguration {
           #   home.username = "xaxa";
           #   home.homeDirectory = "/home/xaxa";
