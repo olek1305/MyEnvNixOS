@@ -29,6 +29,7 @@
         #php83Packages.cyclonedx-php-composer
         (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
         php82Packages.cyclonedx-php-composer
+        steam
         symfony-cli
         thunderbird
         vscode
