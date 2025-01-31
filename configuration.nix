@@ -19,8 +19,24 @@
 
   # Bootloader.
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    # If no dual-boot remove all loader.{grub and efi} and remove # below systemd and efi.
+    # loader.systemd-boot.enable = true;
+    # loader.efi.canTouchEfiVariables = true;
+
+    # Dual-boot
+    loader = {
+      grub = {
+        enable = true;
+        device = "nodev";  # Required for UEFI
+        efiSupport = true;  # Enable EFI support
+        useOSProber = true;  # Detect other operating systems (like Windows)
+      };
+      efi = {
+        canTouchEfiVariables = true;  # Allow GRUB to write to EFI variables
+        efiSysMountPoint = "/boot";  # Mount point for the EFI partition
+      };
+    };
+
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "btrfs" ];
   };
