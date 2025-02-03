@@ -15,7 +15,7 @@
         go
         intel-media-sdk
         intel-vaapi-driver
-        jetbrains.phpstorm
+        jetbrains-toolbox
         kitty # for hyprland
         laravel
         libva
