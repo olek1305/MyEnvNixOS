@@ -11,6 +11,7 @@
         discord
         docker
         docker-compose
+        foliate
         git
         go
         intel-media-sdk
@@ -28,7 +29,8 @@
         #php # 8.3.15
         #php83Packages.cyclonedx-php-composer
         (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
-        php82Packages.cyclonedx-php-composer
+        php82
+        # php82Packages.cyclonedx-php-composer
         steam
         symfony-cli
         thunderbird
