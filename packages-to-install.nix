@@ -28,7 +28,6 @@
         (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
         php82
         # php82Packages.cyclonedx-php-composer
-        radeontop
         steam
         symfony-cli
         thunderbird
