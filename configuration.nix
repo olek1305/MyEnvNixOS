@@ -43,12 +43,12 @@
 
   # Hyprland
   # TODO STILL NOT WORK, DRIVER MODULE NEED TO I915 FROM XE
-  programs.hyprland = {
-    # Install the packages from nixpkgs
-    enable = true;
-    # Whether to enable XWayland
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   # Install the packages from nixpkgs
+  #   enable = true;
+  #   # Whether to enable XWayland
+  #   xwayland.enable = true;
+  # };
  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

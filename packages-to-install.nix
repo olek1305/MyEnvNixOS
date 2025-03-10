@@ -5,6 +5,7 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
         alacritty
+        btop
         clinfo
         curl
         dconf
@@ -17,10 +18,11 @@
         intel-media-sdk
         intel-vaapi-driver
         jetbrains-toolbox
-        kitty # for hyprland
+        # kitty # for hyprland
         laravel
         libva
         linux-firmware
+        nvtopPackages.full
         mesa
         mesa-demos
         nodejs_23
