@@ -15,16 +15,11 @@
         foliate
         git
         go
-        intel-media-sdk
-        intel-vaapi-driver
         jetbrains-toolbox
         # kitty # for hyprland
         laravel
         libva
         linux-firmware
-        nvtopPackages.full
-        mesa
-        mesa-demos
         nodejs_23
         oh-my-zsh
         pciutils
@@ -33,14 +28,14 @@
         (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
         php82
         # php82Packages.cyclonedx-php-composer
+        radeontop
         steam
         symfony-cli
         thunderbird
         vscode
-        vulkan-tools
         wget
-        xdg-desktop-portal-hyprland
-        xwayland
+        # xdg-desktop-portal-hyprland
+        # xwayland
         zed-editor
         zsh
 
