@@ -3,7 +3,7 @@
 {
     hardware.graphics = {
     enable = true;
-    # enable32Bit = true; # For app with 32bit
+    enable32Bit = true; # For Steam
     extraPackages = with pkgs; [
       vpl-gpu-rt # For Video/Photos
       libvdpau-va-gl # VDPAU driver with VA-API/OpenGL backend.
