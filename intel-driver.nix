@@ -9,21 +9,22 @@
       libvdpau-va-gl # VDPAU driver with VA-API/OpenGL backend.
       intel-media-driver # Newer driver graphics
       intel-compute-runtime # implementation for OpenCL.
-
-      # Optional
-      # intel-vaapi-driver # for old graphics
+      intel-vaapi-driver # for old graphics
       mesa # for OpenGL, Vulan and another API graphics
       vulkan-tools
-      #vulkan-loader
-      #libva
+      vulkan-loader
+      libva
     ];
-    # extraPackages32 = with pkgs.pkgsi686Linux; [ intel-vaapi-driver ]; # For 32bit
+
+    extraPackages32 = with pkgs.pkgsi686Linux; [ 
+      intel-vaapi-driver
+      mesa
+      ];
   };
 
   # Force Intel-media-driver
   environment.sessionVariables = { 
     LIBVA_DRIVER_NAME = "iHD"; # Force use of intel-media-driver
-  #   NIXOS_OZONE_WL = "1"; # For Wayland
   };
 }
 

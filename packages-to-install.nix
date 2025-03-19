@@ -8,33 +8,36 @@
         btop
         clinfo
         curl
+        cmake
         dconf
         discord
         docker
         docker-compose
         foliate
         git
+        gimp
         go
+        intel-gpu-tools
         jetbrains-toolbox
-        # kitty # for hyprland
         laravel
         libva
         linux-firmware
+        lm_sensors
         nodejs_23
+        ncurses
         oh-my-zsh
         pciutils
         #php # 8.3.15
         #php83Packages.cyclonedx-php-composer
         (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
         php82
+        pkg-config
         # php82Packages.cyclonedx-php-composer
         steam
         symfony-cli
         thunderbird
         vscode
         wget
-        # xdg-desktop-portal-hyprland
-        # xwayland
         zed-editor
         zsh
 

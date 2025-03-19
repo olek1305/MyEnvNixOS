@@ -38,17 +38,8 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "btrfs" "xe" ];
+    kernelModules = [ "btrfs" ];
   };
-
-  # Hyprland
-  # TODO STILL NOT WORK, DRIVER MODULE NEED TO I915 FROM XE
-  # programs.hyprland = {
-  #   # Install the packages from nixpkgs
-  #   enable = true;
-  #   # Whether to enable XWayland
-  #   xwayland.enable = true;
-  # };
  
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -116,7 +107,7 @@
   users.users.xaxa = {
     isNormalUser = true;
     description = "xaxa";
-    extraGroups = [ "networkmanager" "wheel" "docker" "git" "vscode" "jetbrains.phpstorm"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "git" "vscode" "jetbrains.phpstorm" "zed-editor"];
   };
 
   # Docker settings
