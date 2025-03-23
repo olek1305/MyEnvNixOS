@@ -38,7 +38,7 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "btrfs" ];
+    kernelModules = [ "btrfs" "xe" "i915" ];
   };
  
   networking.hostName = "nixos"; # Define your hostname.
