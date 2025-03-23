@@ -14,17 +14,25 @@
       vulkan-tools
       vulkan-loader
       libva
+      libdrm 
+      pciutils
+      intel-gpu-tools
     ];
 
     extraPackages32 = with pkgs.pkgsi686Linux; [ 
-      intel-vaapi-driver
-      mesa
+        intel-vaapi-driver
+        intel-media-driver
+        mesa
       ];
   };
 
   # Force Intel-media-driver
   environment.sessionVariables = { 
     LIBVA_DRIVER_NAME = "iHD"; # Force use of intel-media-driver
+    # Enable debugging for Intel GPU drivers
+    INTEL_DEBUG = "perf";
+    # Force intel compute runtime for OpenCL
+    OCL_ICD_VENDORS = "intel";
   };
 }
 
