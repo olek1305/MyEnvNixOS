@@ -107,7 +107,7 @@
   users.users.xaxa = {
     isNormalUser = true;
     description = "xaxa";
-    extraGroups = [ "networkmanager" "wheel" "docker" "git" "vscode" "jetbrains.phpstorm" "zed-editor"];
+    extraGroups = [ "networkmanager" "wheel" "docker" "git" ];
   };
 
   # Docker settings
@@ -128,6 +128,8 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  # allow users in "users" group to reboot and shutdown without auth prompt
+  # allow users in "wheel" group unrestricted access to specific applications
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (
@@ -142,9 +144,19 @@
       {
         return polkit.Result.YES;
       }
+
+      if (
+        subject.isInGroup("wheel") &&
+          (
+            action.id.startsWith("org.freedesktop.") ||
+            action.id.startsWith("com.jetbrains.") ||
+            action.id.startsWith("com.visualstudio.code.")
+          )
+      ) {
+        return polkit.Result.YES;
+      }
     });
   '';
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
