@@ -1,28 +1,54 @@
 {
-  description = "NixOS configuration";
-
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix.url = "github:danth/stylix";
+    
+    wallpaper = {
+      url = "path:/etc/nixos/wallpaper.jpg"; 
+      flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+  outputs = { self, nixpkgs, nix-stable, home-manager, stylix, wallpaper, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      stable = import nix-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { 
+          inherit stable wallpaper; 
+        };
         modules = [
           ./configuration.nix
-          # TODO FIX HOME-MANAGER
-          # home-manager.lib.homeManagerConfiguration {
-          #   home.username = "xaxa";
-          #   home.homeDirectory = "/home/xaxa";
-          #   modules = [ ./home.nix ];
-          # }
+          stylix.nixosModules.stylix
+          {
+            _module.args.stable = stable;
+            _module.args.wallpaper = wallpaper;
+          }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.backupFileExtension = "backup";
+            home-manager.useGlobalPkgs = false;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit stable wallpaper; };
+            home-manager.users.xaxa = import ./home.nix;
+          }
         ];
       };
     };
-  };
 }

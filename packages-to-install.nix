@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  customNvtop = pkgs.nvtop.overrideAttrs (oldAttrs: {
+  customNvtop = pkgs.nvtopPackages.full.overrideAttrs (oldAttrs: {
     version = "3.1.0+2025-03-22-git";
     src = pkgs.fetchFromGitHub {
       owner = "Syllo";
@@ -39,14 +39,12 @@ in
         docker
         docker-compose
         foliate
-        git
         gimp
         go
         pciutils
         libva-utils
         jetbrains-toolbox
         laravel
-        libdrm
         libva
         linux-firmware
         lm_sensors

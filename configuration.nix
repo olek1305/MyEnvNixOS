@@ -1,12 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+{ config, pkgs, wallpaper, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./intel-driver.nix
       ./packages-to-install.nix
@@ -14,7 +10,17 @@
       ./environment.nix
     ];
 
-    # Flake
+    stylix = {
+      image = wallpaper;
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/windows-95.yaml";
+
+      cursor = {
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Classic";
+        size = 24;
+      };
+    };
+
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
@@ -150,6 +156,7 @@
           (
             action.id.startsWith("org.freedesktop.") ||
             action.id.startsWith("com.jetbrains.") ||
+            action.id.startsWith("com.toolbox.") ||
             action.id.startsWith("com.visualstudio.code.")
           )
       ) {
