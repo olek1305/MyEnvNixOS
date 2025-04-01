@@ -9,7 +9,7 @@
     stylix.url = "github:danth/stylix";
     
     wallpaper = {
-      url = "path:/etc/nixos/wallpaper.jpg"; 
+      url = "path:/etc/nixos/hosts/default/wallpaper.jpg"; 
       flake = false;
     };
   };
@@ -33,7 +33,7 @@
           inherit stable wallpaper; 
         };
         modules = [
-          ./configuration.nix
+          ./hosts/default/configuration.nix
           stylix.nixosModules.stylix
           {
             _module.args.stable = stable;
@@ -46,7 +46,7 @@
             home-manager.useGlobalPkgs = false;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit stable wallpaper; };
-            home-manager.users.xaxa = import ./home.nix;
+            home-manager.users.xaxa = import ./hosts/default/home.nix;
           }
         ];
       };

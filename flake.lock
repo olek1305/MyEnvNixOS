@@ -503,11 +503,11 @@
       "locked": {
         "lastModified": 1743398379,
         "narHash": "sha256-fZQp7qPMrfYxJoda+GyoIAzSlDG9PnNjQYkJOFH+7tk=",
-        "path": "/etc/nixos/wallpaper.jpg",
+        "path": "/etc/nixos/hosts/default/wallpaper.jpg",
         "type": "path"
       },
       "original": {
-        "path": "/etc/nixos/wallpaper.jpg",
+        "path": "/etc/nixos/hosts/default/wallpaper.jpg",
         "type": "path"
       }
     }
