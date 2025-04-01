@@ -1,4 +1,4 @@
-{ config, pkgs, wallpaper, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -9,17 +9,6 @@
       ./automatic.nix
       ./environment.nix
     ];
-
-    stylix = {
-      image = wallpaper;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/windows-95.yaml";
-
-      cursor = {
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
-        size = 24;
-      };
-    };
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

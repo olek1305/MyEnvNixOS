@@ -7,7 +7,16 @@
     userEmail = "olek1305@gmail.com";
   };
 
-  stylix.enable = true;
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/windows-95.yaml";
+    image = ../wallpapers/wallpaper.jpg;
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
+  };
 
   dconf = {
     enable = true;
