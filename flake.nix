@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nix-stable, home-manager, stylix, wallpaper, ... }:
+  outputs = { self, nixpkgs, nix-stable, home-manager, stylix, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -30,14 +30,13 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { 
-          inherit stable wallpaper; 
+          inherit stable; 
         };
         modules = [
           ./hosts/default/configuration.nix
           stylix.nixosModules.stylix
           {
             _module.args.stable = stable;
-            _module.args.wallpaper = wallpaper;
           }
 
           home-manager.nixosModules.home-manager
@@ -45,7 +44,7 @@
             home-manager.backupFileExtension = "backup";
             home-manager.useGlobalPkgs = false;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit stable wallpaper; };
+            home-manager.extraSpecialArgs = { inherit stable; };
             home-manager.users.xaxa = import ./hosts/default/home.nix;
           }
         ];
