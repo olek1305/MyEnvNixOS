@@ -29,6 +29,7 @@ let
 in
 {
     environment.systemPackages = with pkgs; [
+        act
         alacritty
         btop
         clinfo
