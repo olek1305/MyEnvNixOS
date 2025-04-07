@@ -1,10 +1,16 @@
 { config, pkgs, stable, lib, ... }:
 
 {
-  programs.git = {
-    enable = true;
-    userName = "olek1305";
-    userEmail = "olek1305@gmail.com";
+  programs = {
+    git = {
+      enable = true;
+      userName = "olek1305";
+      userEmail = "olek1305@gmail.com";
+    };
+
+    k9s = {
+      enable = true;
+    };
   };
 
   stylix = {

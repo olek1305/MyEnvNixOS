@@ -40,11 +40,16 @@ in
         docker
         docker-compose
         foliate
+        geeqie
         gimp
         go
+        google-chrome
         pciutils
         libva-utils
         jetbrains-toolbox
+        kubectl
+        kubernetes
+        kubernetes-helm
         laravel
         libva
         linux-firmware
@@ -63,6 +68,7 @@ in
         symfony-cli
         systemd
         thunderbird
+        vlc
         vscode
         wget
         zed-editor
