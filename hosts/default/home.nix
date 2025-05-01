@@ -20,7 +20,7 @@
         shell-integration = "none";
         theme = "catppuccin-macchiato";
         font-family = "JetBrains Mono";
-        font-size = 14;
+        font-size = 10;
       };
     };
 
