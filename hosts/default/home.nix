@@ -2,6 +2,8 @@
 
 {
   programs = {
+    zed-editor.enable = true;
+
     git = {
       enable = true;
       userName = "olek1305";
@@ -10,6 +12,26 @@
 
     k9s = {
       enable = true;
+    };
+
+    ghostty = {
+      enable = true;
+      settings = {
+        shell-integration = "none";
+        theme = "catppuccin-macchiato";
+      };
+    };
+
+    nushell = {
+      enable = true;
+      shellAliases = {
+        update = "sudo nixos-rebuild switch";
+        clean = "sudo nix-collect-garbage -d";
+        gc = "nix-collect-garbage";
+        pa = "php artisan";
+        dc = "docker-compose";
+        ll = "ls -l";
+      };
     };
   };
 

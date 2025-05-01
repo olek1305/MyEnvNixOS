@@ -30,7 +30,6 @@ in
 {
     environment.systemPackages = with pkgs; [
         act
-        alacritty
         btop
         clinfo
         curl
@@ -71,8 +70,6 @@ in
         vlc
         vscode
         wget
-        zed-editor
-        zsh
 
         # for Theme GTK Gnome
         ibus

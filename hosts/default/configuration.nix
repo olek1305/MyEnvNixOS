@@ -3,11 +3,10 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
-      ./intel-driver.nix
-      ./packages-to-install.nix
-      ./automatic.nix
-      ./environment.nix
+      ./importsConf/hardware-configuration.nix
+      ./importsConf/intel-driver.nix
+      ./importsConf/packages-to-install.nix
+      ./importsConf/automatic.nix
     ];
 
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -102,7 +101,8 @@
   users.users.xaxa = {
     isNormalUser = true;
     description = "xaxa";
-    extraGroups = [ "networkmanager" "wheel" "docker" "git" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "git" "ghostty" ];
+    shell = pkgs.nushell;
   };
 
   # Docker settings
