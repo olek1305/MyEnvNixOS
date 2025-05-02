@@ -30,6 +30,7 @@ in
 {
     environment.systemPackages = with pkgs; [
         act
+        android-tools
         awscli2
         btop
         clinfo
@@ -44,7 +45,7 @@ in
         gimp
         go
         google-chrome
-        pciutils
+
         jetbrains-toolbox
         kubectl
         kubernetes
@@ -53,6 +54,7 @@ in
         libreoffice-qt6
         linux-firmware
         lm_sensors
+        lzip
         udev
         mesa-demos
         nodejs_23
@@ -63,12 +65,14 @@ in
         (php82.withExtensions (exts: with pkgs.phpExtensions; [ mongodb ]))
         php82
         pkg-config
+        python39
         steam
         symfony-cli
         systemd
         thunderbird
         vlc
         vscode
+        waydroid
         wget
 
         # for Theme GTK Gnome

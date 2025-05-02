@@ -78,6 +78,8 @@
     variant = "";
   };
 
+  virtualisation.waydroid.enable = true;
+
   # Configure console keymap
   console.keyMap = "pl2";
 
