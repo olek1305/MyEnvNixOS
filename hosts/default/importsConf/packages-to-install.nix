@@ -30,6 +30,7 @@ in
 {
     environment.systemPackages = with pkgs; [
         act
+        awscli2
         btop
         clinfo
         curl
