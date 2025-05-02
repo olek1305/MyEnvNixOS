@@ -45,13 +45,12 @@ in
         go
         google-chrome
         pciutils
-        libva-utils
         jetbrains-toolbox
         kubectl
         kubernetes
         kubernetes-helm
         laravel
-        libva
+        libreoffice-qt6
         linux-firmware
         lm_sensors
         udev
